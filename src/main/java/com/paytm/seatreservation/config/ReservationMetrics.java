@@ -15,6 +15,7 @@ public class ReservationMetrics {
 
     private final MeterRegistry registry;
     private final Counter confirmedCounter;
+    private final Counter heldCounter;
     private final Counter declinedSeatTakenCounter;
     private final Counter declinedUserLimitCounter;
     private final Counter declinedIdempotentReplayCounter;
@@ -31,6 +32,10 @@ public class ReservationMetrics {
 
         this.confirmedCounter = Counter.builder("reservation.confirmed.total")
                 .description("Total confirmed reservations")
+                .register(registry);
+
+        this.heldCounter = Counter.builder("reservation.confirmed.total")
+                .description("Total Held reservations")
                 .register(registry);
 
         this.declinedSeatTakenCounter = Counter.builder("reservation.declined.seat_taken.total")
@@ -132,4 +137,10 @@ public class ReservationMetrics {
             gaugeLock.unlock();
         }
     }
+
+	public void incrementHeld() {
+		// TODO Auto-generated method stub
+		heldCounter.increment();
+		
+	}
 }

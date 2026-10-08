@@ -65,11 +65,6 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
-    export:
-      prometheus:
-        enabled: true
-        step: 10s
-
   health:
     db:
       enabled: true
@@ -78,6 +73,11 @@ management:
     
   tracing:
     enabled: false
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+        step: 10s
 
 logging:
   level:

@@ -6,9 +6,9 @@
 set -euo pipefail
 
 BASE_URL="${1:-http://localhost:8081}"
-SHOW_ID="${2:-1}"
-SEAT="${3:-A7}"
-USERS="${4:-20}"
+SHOW_ID="${2:-2}"
+SEAT="${3:-A6}"
+USERS="${4:-100}"
 REQ_PER_USER="${5:-10}"
 
 TOTAL=$((USERS * REQ_PER_USER))
